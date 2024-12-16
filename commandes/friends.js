@@ -16,7 +16,8 @@ zokou({
     mybotpic: _0x43a6e2
   } = _0x2358bf;
   const _0x21b56d = [{
-    'nom': "Belta from Kenya",
+    'nom': "Keith from Kenya",
+    'numero': "load" 
     'nom': "FrediTech from Tanzania 🇹🇿",
     'numero': "load..."
   }, {
@@ -38,11 +39,11 @@ zokou({
     'nom': "Dullah From Tanzania 🇹🇿",
     'numero': "255716945971"
   }, {
-    'nom': "🤕",
-    'numero': "load..."
+    'nom': "YassinTech From Tanzania 🇹🇿",
+    'numero': "255621995482"
   }, {
-'nom': "🤕",
-    'numero': "load...."
+'nom': "HansTech From Tanzania 🇹🇿",
+    'numero': "255692540143"
   }, {
 'nom': "🤕",
     'numero': "load...."

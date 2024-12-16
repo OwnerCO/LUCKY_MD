@@ -1,182 +1,77 @@
 const util = require('util');
-
 const fs = require('fs-extra');
-
 const { zokou } = require(__dirname + "/../framework/zokou");
-
 const { format } = require(__dirname + "/../framework/mesfonctions");
-
 const os = require("os");
-
 const moment = require("moment-timezone");
-
 const s = require(__dirname + "/../set");
+const more = String.fromCharCode(8206);
+const readmore = more.repeat(4001);
 
+zokou({ nomCom: "menu", categorie: "Menu" }, async (dest, zk, commandeOptions) => {
+    let { ms, repondre, prefixe, nomAuteurMessage, mybotpic } = commandeOptions;
+    let { cm } = require(__dirname + "/../framework/zokou");
+    let coms = {};
+    let mode = "public";
 
-
-zokou({ nomCom: "list", categorie: "Menu" }, async (dest, zk, commandeOptions) => {
-
-    let { ms, repondre ,prefixe,nomAuteurMessage,mybotpic} = commandeOptions;
-
-    let { cm } = require(__dirname + "/../framework//zokou");
-
-    var coms = {};
-
-    var mode = "public";
-
-    
-
-    if ((s.MODE).toLocaleLowerCase() != "yes") {
-
+    if ((s.MODE).toLowerCase() !== "yes") {
         mode = "private";
-
     }
 
-
-
-
-
-    
-
-
-
-    cm.map(async (com, index) => {
-
-        if (!coms[com.categorie])
-
+    cm.map((com) => {
+        if (!coms[com.categorie]) {
             coms[com.categorie] = [];
-
+        }
         coms[com.categorie].push(com.nomCom);
-
     });
 
+    moment.tz.setDefault('Etc/GMT');
+    const temps = moment().format('HH:mm:ss');
+    const date = moment().format('DD/MM/YYYY');
 
+    let infoMsg = `
+╭━━━━✧LUCKY-MD✧━━━━❖\n┃❁┌────••••────⊷\n┃❁│• *User :*   ${.OWNER_NAME}\n┃❁│• *Prefix :* ${s.PREFIXES} \n┃❁│• *Commands :* ${_0x5663a1.length}  \n┃❁│• *Time :* ${_0x515c87} \n┃❁│• *Date :* ${_0x1fabd7} \n┃❁│• *Mode :* ${_0x2443e9} \n┃❁│• *Time Zone :* ${s.TZ} \n┃❁│• *Total Users :* ${_0x1654b0}  \n┃❁│• *Ram :* ${os.totalmem} + ${os.freemem} + "/" + ${os.totalmem} \n┃❁│• *Uptime :* ${process.uptime} \n┃❁└────••••────⊷\n╰━━━━✧To-GOD✧━━━━◆ \n\n${readmore}
 
-    moment.tz.setDefault(s.TZ);
-
-
-
-// Créer une date et une heure en GMT
-
-const temps = moment().format('HH:mm:ss');
-
-const date = moment().format('DD/MM/YYYY');
-
-
-
-  let infoMsg =  `
-
-┏❏ ⌜  𝕃𝕌ℂ𝕂𝕐 𝕄𝔻 𝕍7 ⌟ ❐
-┃ ⿻𝕄𝕠𝕕𝕖: ${mode}
-┃ ⿻𝕌𝕤𝕖𝕣 : ${s.OWNER_NAME}
-┃ ⿻𝕃𝕚𝕓𝕣𝕒𝕣𝕪 : Baileys
-️┃ ⿻ℙ𝕣𝕖𝕗𝕚𝕩 : ${s.PREFIXE}
-️┃ ⿻𝔻𝕒𝕥𝕖 : ${date}
-┃ ⿻𝕋𝕚𝕞𝕖 : ${temps}
-┃ ⿻𝕋𝕠𝕠𝕝𝕤 : ${cm.length}
-┃ ⿻ℝ𝕒𝕞 : ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
-┃ ⿻ℍ𝕠𝕤𝕥 : ${os.platform()}
-┗❏\n\n`;
-
-
-    
-
-let menuMsg = `
-> ┏━━━━━━━━━┓
-> ┣➠Lucky cmds
-> ┗━━━━━━━━━┛\n
-
-
+┊🪄🎄ғʀᴇᴅɪᴇᴛᴇᴄʜ ᴛᴇᴀᴍ ᴡɪsʜ ʏᴏᴜ ᴍᴀʀʀʏ ᴄʜʀɪsᴛᴍᴀs🎄 🪄
 `;
 
-
-
+    let menuMsg = `𝙻𝚞𝚌𝚔𝚢 𝙼𝚍 𝙲𝚖𝚍`;
+    
     for (const cat in coms) {
-
-        menuMsg += `┏❏ *${cat}*`;
-
-        for (const cmd of coms[cat]) {
-
-            menuMsg += `
-┃  ๛ _*${cmd}*_`;
-
-        }
-
         menuMsg += `
-┗❏\n`
-
+❁━━〔 *${applyStyle(_0x2dca87.toUpperCase(), 10)}* 〕━━❁
+╭━━══••══━━••⊷
+║◆┊ `;
+        for (const cmd of coms[cat]) {
+            menuMsg += `          
+║◆┊ ${s.PREFIXE}   ` + _0x181763++ + `. ` + applyStyle(_0x53df00, 10);
     }
-
-
-
+        menuMsg += `
+║◆┊
+╰─━━═••═━━••⊷`;
+    }
+    
     menuMsg += `
-
-
-> ┏━━━━━━━━━━━━━━┓
-> ┣➠Lucky md V7 2024
-> ┣➠Enjoy life  
-> ┗┳━━━━━━━━━━━━┳┛
-> ┏┻━━━━━━━━━━━━┻┓
-> ┃➠powered by Fredie Tech
-> ┗━━━━━━━━━━━━━━┛\n
-
-
-`;
-
-
-
-   var lien = mybotpic();
-
-
-
-   if (lien.match(/\.(mp4|gif)$/i)) {
+\n☆ *THE LUCKY MULTI DEVICE* ☆\n\n   *Made In Tanzania*\n   \n _Created By *Fredi Ezra*_\n  \n     *KEEP USING LUCKY-MD*\n`;
 
     try {
-
-        zk.sendMessage(dest, { video: { url: lien }, caption:infoMsg + menuMsg, footer: "Je suis *TKM-BOT*, déveloper Cod3uchiha" , gifPlayback : true }, { quoted: ms });
-
+        const senderName = nomAuteurMessage || message.from;  // Use correct variable for sender name
+        await zk.sendMessage(dest, {
+            text: infoMsg + menuMsg,
+            contextInfo: {
+                mentionedJid: [senderName],
+                externalAdReply: {
+                    title: "LUCKY MD",
+                    body: "coded by Freddie",
+                    thumbnailUrl: "https://files.catbox.moe/7irwqn.jpeg",
+                    sourceUrl: "https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f",
+                    mediaType: 1,
+                    renderLargerThumbnail: true
+                }
+            }
+        });
+    } catch (error) {
+        console.error("Menu error: ", error);
+        repondre("🥵🥵 Menu error: " + error);
     }
-
-    catch (e) {
-
-        console.log("🥵🥵 Menu error " + e);
-
-        repondre("🥵🥵 Menu error " + e);
-
-    }
-
-} 
-
-// Vérification pour .jpeg ou .png
-
-else if (lien.match(/\.(jpeg|png|jpg)$/i)) {
-
-    try {
-
-        zk.sendMessage(dest, { image: { url: lien }, caption:infoMsg + menuMsg, footer: "Je suis *TKM-bot*, déveloper cod3uchiha" }, { quoted: ms });
-
-    }
-
-    catch (e) {
-
-        console.log("🥵🥵 Menu error " + e);
-
-        repondre("🥵🥵 Menu error " + e);
-
-    }
-
-} 
-
-else {
-
-    
-
-    repondre(infoMsg + menuMsg);
-
-    
-
-}
-
-
-
 });

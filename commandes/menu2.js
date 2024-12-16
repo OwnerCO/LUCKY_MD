@@ -8,7 +8,7 @@ const s = require(__dirname + "/../set");
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 
-zokou({ nomCom: "menu", categorie: "Menu" }, async (dest, zk, commandeOptions) => {
+zokou({ nomCom: "helps", categorie: "Menu" }, async (dest, zk, commandeOptions) => {
     let { ms, repondre ,prefixe,nomAuteurMessage,mybotpic} = commandeOptions;
     let { cm } = require(__dirname + "/../framework//zokou");
     var coms = {};
@@ -37,7 +37,7 @@ const date = moment().format('DD/MM/YYYY');
 ❂━━══❖ _*LUCKY MD*_ ❖══━━❂
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 ❂━━━━════❖═══━━━━❂
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
   ╭──━━━━══➻══━━━━✣
   ┃➳ *my owner* : ${s.OWNER_NAME}
   ┃➳ *commander* : ${nomAuteurMessage} 
@@ -49,22 +49,22 @@ const date = moment().format('DD/MM/YYYY');
   ┃➳ *running on* : ${os.platform()}
   ┃➳ *theme* : *FREDI*
   ╰──━━━━══➻══━━━━✣ ${readmore}
- ▒▓10% ${readmore}
- ▒▓▓20%  *FREDI* ${readmore}
- ▒▓▓▓30%  *TECH* ${readmore}
- ▒▓▓▓▓40%  *SIR* ${readmore}
- ▒▓▓▓▓▓50% ${readmore}
- ▒▓▓▓▓▓▓60% ${readmore}
- ▒▓▓▓▓▓▓▓70% ${readmore}
- ▒▓▓▓▓▓▓▓▓80% ${readmore}
- ▒▓▓▓▓▓▓▓▓▓90% ${readmore}
+ ▒▓10% 
+ ▒▓▓20%    *FREDI*
+ ▒▓▓▓30%   *TECH* 
+ ▒▓▓▓▓40%   *SIR* 
+ ▒▓▓▓▓▓50% 
+ ▒▓▓▓▓▓▓60% 
+ ▒▓▓▓▓▓▓▓70% 
+ ▒▓▓▓▓▓▓▓▓80%
+ ▒▓▓▓▓▓▓▓▓▓90% 
  ▒▓▓▓▓▓▓▓▓▓▓100% ${readmore}
- *ALL COMMAND ADDED✔️!* ${readmore}
+ *ALL COMMAND ADDED✔️!* 
 
  ❂━━━━═════❖════━━━━❂
   ╭──━━━━══➻══━━━━❂
   ┃⦿ _*LUCKY MD 2024*_
-  ╰──━━━━══➻══━━━━❂\n${readmore}`;
+  ╰──━━━━══➻══━━━━❂`;
     
 let menuMsg = `
 
@@ -77,19 +77,21 @@ let menuMsg = `
 `;
 
     for (const cat in coms) {
-        menuMsg += `╭─━━══❖ _*${cat}*_ ❖══━━━⦿`;
+        menuMsg += `╭─━━══❖ _*${cat}*_ ❖══━━━➻`;
         for (const cmd of coms[cat]) {
             menuMsg += `
 ┃➻ *${cmd}*`;
         }
         menuMsg += `
 ╰─━━═════━━⊷⊷➳➻➳
- ▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓ \n`
+✣━━━━═══•∞•═══━━━━✣
+ ᴾᴼᵂᴱᴿᴱᴰ ᴮʸ ᶠᴿᴱᴰᴵᴱ ᵀᴱᶜᴴ ˢᴵᴿ
+❖━━━━═══•∞•═══━━━━❖ \n`
     }
 
-    menuMsg += `  ✣━━━━═══⦿❂═══━━━━❖
+    menuMsg += `  ✣━━═══⦿•∞•❂═══━━━❖
     ┃▓ *powered by Fredie Tech*
-    ✣━━━━═══❂⦿═══━━━━❖
+    ❖━━═══❂•∞•⦿═══━━━✣
 
     ▒▒▒▒▒▒▒▒▒▒▒
     ▒▓▓▓▓▓▓▓▓▓▒
@@ -138,6 +140,8 @@ let menuMsg = `
     ▒▒▒▒▓▓▓▒▒▒▒
     ▒▒▒▒▓▓▓▒▒▒▒
     ▒▒▒▒▒▒▒▒▒▒▒
+
+    > _®FredieTech info_
 `;
 
    var lien = mybotpic();

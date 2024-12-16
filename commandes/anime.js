@@ -81,7 +81,7 @@ zokou({
     const imdbData = response.data;
 
     let imdbInfo = "⚍⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚍\n";
-    imdbInfo += " ``` 𝕀𝕄𝔻𝔹 𝕊𝔼𝔸ℝℂℍ```\n";
+    imdbInfo += " ``` 𝕀𝕄𝔻𝔹 𝕊𝔼𝔸ℝℂℍ 𝔹𝕐 ℍ𝔸ℕ𝕊```\n";
     imdbInfo += "⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎⚎\n";
     imdbInfo += "🎬Title    : " + imdbData.Title + "\n";
     imdbInfo += "📅year      : " + imdbData.Year + "\n";
@@ -116,7 +116,7 @@ zokou({
 
 
 zokou({
-  nomCom: "emomix",
+  nomCom: "emojimix",
   categorie: "Conversion"
 }, async (dest, zk, commandeOptions) => {
   const { arg, repondre,ms , nomAuteurMessage } = commandeOptions;
@@ -127,7 +127,7 @@ zokou({
   }
 
   // Divisez la chaîne en deux emojis en utilisant le point-virgule comme séparateur
-  const emojis = arg.join(' ').split(';');
+  const emojis = arg.join(' ').split('+');
 
   if (emojis.length !== 2) {
     repondre("Please specify two emojis using a ';' as a separator.");
@@ -162,4 +162,3 @@ zokou({
     repondre("An error occurred while creating the emoji mix." + error );
   }
 });
-

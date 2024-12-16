@@ -82,7 +82,7 @@ zokou(
             repondre(`*List of all stickcmd :*
  ${cmdList}`);
         } else {
-            repondre('No stickcmd save');
+            repondre('uuuuhh no stickcmd save');
         }
     }
 );

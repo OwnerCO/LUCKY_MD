@@ -1,154 +1,87 @@
 const {
   zokou
-} = require("./../framework/zokou");
-const {
-  format,
-  runtime
-} = require('../framework/mesfonctions');
-const os = require('os');
-const speed = require('performance-now');
-const {
-  performance
-} = require('perf_hooks');
-const conf = require('../set');
-
-zokou(
-  {
-    nomCom: 'ping',
-    categorie: 'General',
-    reaction: '🚀',
-    alias: ['p']
-  },
-
-  async (dest, zk, commandOptions) => {
-    const {
-      ms, arg, repondre
-    } = commandOptions;
-    const start = new Date().getTime();
-    const msg = await zk.sendMessage(dest, {
-      text: '*Testing Ping!!!*',
-    }, {
-      quoted: ms
-    });
-    const end = new Date().getTime();
-    const ping = end - start;
-    await zk.sendMessage(dest, {
-      text: `*Pong*
- *${ping} ms*`, edit: {
-        id: msg.key.id, remoteJid: dest
-      }});
-    await zk.sendMessage(dest, {
-      react: {
-        text: "⚙️", key: ms.key
-      }})
-  }
-)
-
-zokou(
-  {
-    nomCom: 'desc',
-    reaction: 'ℹ',
-    alias: ['i']
-  },
-
-  async (dest, zk, commandOptions) => {
-    const {
-      ms, arg, repondre
-    } = commandOptions;
-    // data
-    const tumbUrl = 'https://i.ibb.co/wyYKzMY/68747470733a2f2f74656c656772612e70682f66696c652f6530376133643933336662346361643062333739312e6a7067.jpg';
-    const used = process.memoryUsage();
-    const cpus = os.cpus().map(cpu => {
-      cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0);
-      return cpu
-    });
-    const cpu = cpus.reduce((last, cpu, _, {
-      length
-    }) => {
-      last.total += cpu.total
-      last.speed += cpu.speed / length
-      last.times.user += cpu.times.user
-      last.times.nice += cpu.times.nice
-      last.times.sys += cpu.times.sys
-      last.times.idle += cpu.times.idle
-      last.times.irq += cpu.times.irq
-      return last
-    }, {
-      speed: 0,
-      total: 0,
-      times: {
-        user: 0,
-        nice: 0,
-        sys: 0,
-        idle: 0,
-        irq: 0
-      }
-    });
-    let timestamp = speed();
-    let latensi = speed() - timestamp;
-    let neww = performance.now();
-    let oldd = performance.now();
-    const response = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
-
-💻 Info Server
-    RAM: ${format(os.totalmem() - os.freemem())} / ${format(os.totalmem())}
-
-_NodeJS Memory Usaage_
-    ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v => v.length)), ' ')}: ${format(used[key])}`).join('\n')}
-
-${cpus[0] ? `_Total CPU Usage_
-    ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
-_CPU Core(s) Usage (${cpus.length} Core CPU)_
-    ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}`: ''}
-    `.trim();
-    await zk.sendMessage(dest, {
-      text: response,
-      contextInfo: {
-        externalAdReply: {
-          showAdAttribution: true,
-          title: `${conf.BOT}`,
-          body: `${latensi.toFixed(4)} Second`,
-          thumbnailUrl: `${tumbUrl}`,
-          sourceUrl: global.link,
-          mediaType: 1,
-          renderLargerAbhinail: true
-        }
-      }
-    }, {
-      quoted: ms
-    })
-  }
-);
-
-zokou(
-  {
-    nomCom: 'runtime',
-    reaction: '🚨',
-    alias: ['uptime']
-  },
-  async (dest, zk, commandOptions) => {
-    const {
-      ms
-    } = commandOptions;
-    const tumbUrl = 'https://i.ibb.co/wyYKzMY/68747470733a2f2f74656c656772612e70682f66696c652f6530376133643933336662346361643062333739312e6a7067.jpg';
-    const runtimetext = `🚨 *Bot Have Been Running For ${runtime(process.uptime())}* 🚨`;
-    zk.sendMessage(dest, {
-      text: runtimetext,
-      contextInfo: {
-        externalAdReply: {
-          showAdAttribution: true,
-          title: `${conf.BOT}`,
-          body: `「 RUNTIME 」`,
-          thumbnailUrl: tumbUrl,
-          sourceUrl: global.link,
-          mediaType: 1,
-          renderLargerAbhinail: true
-        }
-      }
-    }, {
-      quoted: ms
-    })
-  }
-);
-    
+} = require("../framework/zokou");
+function delay(_0x25f170) {
+  console.log("â±ï¸ delay for " + _0x25f170 + 'ms');
+  return new Promise(_0x529a1f => setTimeout(_0x529a1f, _0x25f170));
+}
+zokou({
+  'nomCom': "ping",
+  'desc': "To check bot response time",
+  'Categorie': "General",
+  'reaction': '🥂',
+  'fromMe': "true"
+}, async (_0x4cfdc6, _0x41d5d3, _0x546e3d) => {
+  const {
+    ms: _0x2c968b
+  } = _0x546e3d;
+  const _0x5a815c = Array.from({
+    'length': 0x3
+  }, () => Math.floor(Math.random() * 10000 + 1000));
+  const _0x451c3b = _0x5a815c.map(_0x526b71 => "🔴 PONG: " + _0x526b71 + " 🔴").join("\n");
+  const _0x41d2b1 = {
+    'externalAdReply': {
+      'title': "Lucky_Md My Ultra Speed Response",
+      'body': "Ping Results : " + _0x451c3b,
+      'sourceUrl': "https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f",
+      'thumbnailUrl': "https://files.catbox.moe/7irwqn.jpeg",
+      'mediaType': 0x1,
+      'showAdAttribution': true
+    }
+  };
+  const _0x54ea81 = {
+    'displayName': "LUCKY MD Support",
+    'vcard': "BEGIN:VCARD\nVERSION:3.0\nFN:LUCKY MD\nORG:LUCKY MD Nexus;\nTEL;type=CELL;type=VOICE;waid=255764182801:+255 752 593 977\nEND:VCARD"
+  };
+  await _0x41d5d3.sendMessage(_0x4cfdc6, {
+    'text': "🛸 *LUCKY MD* 🛸",
+    'contextInfo': _0x41d2b1,
+    'contacts': {
+      'displayName': "LUCKY MD Verified Contact",
+      'contacts': [_0x54ea81]
+    },
+    'quoted': _0x2c968b
+  });
+  console.log("Ping results sent successfully with contact and context info!");
+});
+zokou({
+  'nomCom': "uptime",
+  'desc': "To check runtime",
+  'Categorie': "General",
+  'reaction': '😂˜',
+  'fromMe': "true"
+}, async (_0x205206, _0x161605, _0x2fdaee) => {
+  const {
+    ms: _0x4e9ae0,
+    repondre: _0x2a6ebf
+  } = _0x2fdaee;
+  const _0x766aaf = process.uptime();
+  const _0x2f3abc = new Date(_0x766aaf * 1000).toISOString().substr(11, 8);
+  const _0xae590 = {
+    'externalAdReply': {
+      'title': "LUCKY MD - System Uptime",
+      'body': "Bot has been running for: " + _0x2f3abc,
+      'sourceUrl': "https://whatsapp.com/channel/0029VaihcQv84Om8LP59fO3f",
+      'thumbnailUrl': "https://files.catbox.moe/bdjmrd.jpg",
+      'mediaType': 0x1,
+      'showAdAttribution': true
+    }
+  };
+  const _0x297b69 = {
+    'displayName': "LUCKY MD Support",
+    'vcard': "BEGIN:VCARD\nVERSION:3.0\nFN:LUCKY MD\nORG:LUCKY MD Nexus;\nTEL;type=CELL;type=VOICE;waid=255764182801:+244 752 593 977\nEND:VCARD"
+  };
+  await _0x161605.sendMessage(_0x205206, {
+    'text': "*LUCKY MD UPTIME* " + _0x2f3abc,
+    'contextInfo': _0xae590,
+    'contacts': {
+      'displayName': "LUCKY MD Verified Contact",
+      'contacts': [_0x297b69]
+    },
+    'quoted': _0x4e9ae0
+  });
+  console.log("Uptime sent successfully with contact and context info!");
+});
+module.exports = {
+  'delay': delay
+};

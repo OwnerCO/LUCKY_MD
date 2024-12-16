@@ -1,8 +1,8 @@
 {
-  "name":"𝗟𝗨𝗖𝗞𝗬 𝗠𝗗 𝗩𝟳 𝗨𝗣𝗗𝗔𝗧𝗘 𝗕𝗬 𝗠𝗘",
-  "description":"Best WhatsApp Bot Developed By Fredie Ezra Contact Us 255686745716,255764182801,255620814108,255752593977 Thank you for choose Lucky🍀 MD V5",
+  "name":"LUCKY-MD",
+  "description":"Best whatsapp bot created by FREDIEZRA",
   "keywords":["bot","node","baileys","whatsapp"],
-  "logo":"https://telegra.ph/file/187cfa2365d88ffe98fec.jpg",
+  "logo":"https://files.catbox.moe/7irwqn.jpeg",
   "repository":"https://github.com/Fred1e/LUCKY_MD",
   "succes_url":"/",
   "stack":"container",
@@ -13,53 +13,90 @@
       "value":".",
       "required":true
     },
+	  "ANTICALL":
+    {
+      "description":"Enter yes for your bot to reject calls",
+      "value":"yes",
+      "required":false
+    },
+         "AUTO_BIO":
+    {
+      "description":"Enter yes for your bot to auto bio",
+      "value":"no",
+      "required":false
+    },
+	    "AUTO_REACT_STATUS":
+    {
+      "description":"Enter yes for your bot to auto react status",
+      "value":"yes",
+      "required":false
+    },
+	  "AUTO_SAVE_CONTACTS":
+    {
+      "description":"Enter yes for your bot to auto save contacts",
+      "value":"no",
+      "required":false
+    },
+	  "AUTO_REACT":
+    {
+      "description":"Enter yes for your bot to auto react message in all chats",
+      "value":"yes",
+      "required":false
+    },
+	  "AUTO_REPLY":
+    {
+      "description":"Enter yes for your bot to auto reply message when you are offline",
+      "value":"yes",
+      "required":false
+    },
     "AUTO_READ_STATUS":
     {
       "description":"Your contact status will be read automatically(type yes to active or no to deactive  ; don't write in capital letter)",
       "value":"yes",
       "required":false
-    }, "AUTO_DOWNLOAD_STATUS":
+    }, 
+	  "AUTO_DOWNLOAD_STATUS":
     {
       "description":"Your contact status will be download automatically and send to you(type yes to active or no to deactive ; don't write in capital letter)",
       "value":"no",
       "required":false
     }
     ,
-     "PM_PERMIT" :
+        "PM_PERMIT" :
      {
       "description":"Other user can't use your bot in pm (type yes to active or no to deactive ; don't write in capital letter)",
       "value":"no",
-      "required":true
-    }
-    ,
-    "BOT_NAME" : {
-       
-      "description":"put A name for your bot",
-      "value":"𝗟𝗨𝗖𝗞𝗬 𝗠𝗗 𝗩𝟳",
       "required":false
+    },
+       "BOT_NAME" : 
+    {
+    "description":"put A name for your bot",
+    "value":"LUCKY_MD",
+    "required":false
 
-    } ,
-     "BOT_MENU_LINKS" : {
-    
-      "description":"add one or many link for your bot menu  ; eg : url1,url2,url3.....",
-      "value":"https://telegra.ph/file/187cfa2365d88ffe98fec.jpg,https://telegra.ph/file/9468e35d76585a0d4a0df.jpg,https://telegra.ph/file/74efff424a978be5e3c40.jpg",
-      "required":false
+    },
+       "BOT_MENU_LINKS" : 
+   {
+    "description":"add one or many link for your bot menu  ; eg : url1,url2,url3.....",
+    "value":"https://files.catbox.moe/7irwqn.jpeg",
+    "required":false
        
      },
     "PUBLIC_MODE":
     {
       "description":"type yes to put your bot on public mode or no to put it on private mod",
-      "value":"no",
-      "required": true 
-    },
-    "HEROKU_APY_KEY": {
-      "description": "insert your heroku api-key (The name you wrote at the beginning)",
-      "value" : "HRKU-841b19e7-8679-437b-bb6c-edd4133978dd", 
-      "required": true
+      "value":"yes",
+      "required":false
+    }
+	,
+    "HEROKU_API_KEY": {
+    "description": "insert your heroku api-key (this is optionnal)",
+     "value":"HRKU-4e30b0fa-c892-471f-833b-dbdb416de2d3", 
+     "required" :false
     },
   "HEROKU_APP_NAME": {
     "description": "insert your heroku APP NAME (this is optionnal)",
-     "required" :true
+     "required" :false
     }  
 	  ,
     "SESSION_ID":
@@ -74,15 +111,14 @@
     
     "desc": "Your Name",
     "required": false,
-    "value": "ғʀᴇᴅɪᴇ ᴛᴇᴄʜ"
+    "value": "fredietech"
   },
     "NUMERO_OWNER":
   {
     
     "desc": "Your number , dont put '+' and put you area code(exemple of togo '228')",
     "required":false,
-    "value": "255686745716,255764182801,255620814108,255752593977"
-	  
+    "value": "255752593977"
   },
     "WARN_COUNT":
   {
@@ -98,26 +134,43 @@
   },
   "PRESENCE":{
     "description":"Mark your presence: 1 to indicate that you are online even if you are not. 2 to indicate that you are currently typing a message. 3 to indicate that you are currently recording an audio. Or leave the field blank to indicate your real state.",
-    "value":"1",
-    "required": true 
+    "value":"2",
+    "required": false
+	  
   },
+	    "AUTO_READ":{
+    "description":"Enter yes for auto read messages.",
+    "value":"no",
+    "required": false
+    },
   "ANTI_DELETE_MESSAGE" : {
     "description": "if you want to enable anti delete message put yes else put no",
-    "value": "yes",
-    "required": true 
+    "value": "no",
+        "required": false
   }
   },
 
-  "formation": {
-		"worker": {
-			"quantity": 1,
-			"size": "basic"
-		}
-	},
-
-  "addons":[
+    "buildpacks": [
     {
-      "plan":"heroku-postgresql"
+      "url": "heroku/nodejs"
+    },
+
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "standard-2x"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:essential-0"
     }
   ]
   }

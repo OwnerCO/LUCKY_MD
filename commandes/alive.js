@@ -39,11 +39,14 @@ const date = moment().format('DD/MM/YYYY');
 *Mode* : ${mode}
 *Date* : ${date}
 *Hours(GMT)* : ${temps}
+*From* : Tanzania
+*Bot* : ${s.bot} 
+*Forks* : ${forks} 
 
  ${message}
  
  
- *LUCKY🍀-MD-V5-WABOT*`
+ *LUCKY MD 2025*`
 
  if (lien.match(/\.(mp4|gif)$/i)) {
     try {
@@ -71,14 +74,14 @@ else {
 }
 
     } else {
-        if(!superUser) { repondre("there is no alive for this bot") ; return};
+        if(!superUser) { repondre("Hello Fahm Lucky Md Is A Live 24hrs Enjoy To Use All Time🤗") ; return};
 
       await   repondre("You have not yet saved your alive, to do this;  enter after alive your message and your image or video link in this context: .alive message;lien");
          repondre("don't do fake thinks :)")
      }
  } else {
 
-    if(!superUser) { repondre ("Only the owner can  modify the alive") ; return};
+    if(!superUser) { repondre ("Uuuhh Only the owner can  modify the alive") ; return};
 
   
     const texte = arg.join(' ').split(';')[0];
@@ -88,7 +91,7 @@ else {
     
 await addOrUpdateDataInAlive(texte , tlien)
 
-repondre(' Hello👋 , *LUCKY_MD BOT* is alive just like you gee😜. ')
+repondre('  Lucky Md Is A Live 24hrs Enjoy To Use All Time🤗. ')
 
 }
     });
